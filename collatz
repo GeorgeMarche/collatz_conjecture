@@ -1,0 +1,30 @@
+# Collatz Conjecture
+import re
+
+def even(num):
+    print(str(num) + " / 2 = " + str(int(num/2)) + "\n")
+    return int(num/2)
+    
+def odd(num):
+    print(str(num) + " * 3 + 1 = " + str(num*3 + 1) + "\n")
+    return num*3 + 1
+    
+def collatz(num):
+    if num == 1:
+        print("It's 1. This is where we stop. \n")
+        return None
+    elif num % 2 == 0:
+        collatz(even(num))
+    else:
+        collatz(odd(num))
+        
+    
+    
+num = input("Enter any natural number: \n")
+match = re.match(r"^[0-9]+$", num)
+
+if match:
+    collatz(int(num))
+else:
+    print("Not a proper number")
+    
